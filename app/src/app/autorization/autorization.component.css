@@ -1,0 +1,12 @@
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  list-style: none;
+  /* margin: 5%; */
+  /* padding: 0; */
+  overflow-wrap: break-word;
+}

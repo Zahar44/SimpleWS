@@ -1,0 +1,22 @@
+<div class = "chat-group">
+  <ul class = "chat-history">
+      <li *ngFor="let item of chatHistory">
+        <div *ngIf="item.sender.name === sender.name">
+          <div class = "msg-sender">
+            <span>{{ item.msg }}</span>
+          </div>
+        </div>
+        <div *ngIf="item.sender.name !== sender.name">
+          <div class = "msg-other">
+            <span class = "sender"><i>{{ item.sender.name }}</i></span>
+            <span>: {{ item.msg }}</span>
+          </div>
+        </div>
+    </li>
+  </ul>
+</div>
+
+<div class = "form-group">
+  <input type="text" [(ngModel)]="message" (keydown.enter)="onKeydown($event)"/>
+  <button (click)='onSend()'>Send</button>
+</div>

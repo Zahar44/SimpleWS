@@ -1,0 +1,29 @@
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-group {
+  border: 1px solid #000;
+}
+
+.chat-history {
+  list-style: none;
+  margin: 5%;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
+.msg-other {
+  text-align: left;
+}
+
+.msg-sender {
+  text-align: right;
+  font-size: 10px;
+}
+
+.sender {
+  font-weight: bold;
+}

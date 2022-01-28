@@ -1,0 +1,15 @@
+<div class = "form-group">
+  <ul class = "content">
+    <li>
+      <div>
+        <span>Your name: </span>
+        <input type="text" [(ngModel)]="name" (keydown.enter)="onKeydown($event)"/>
+      </div>
+    </li>
+    <li>
+      <button routerLink="/chat" (click)="enter()">Enter</button>
+    </li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>
