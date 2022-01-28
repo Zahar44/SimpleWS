@@ -2,12 +2,26 @@
   <ul class = "content">
     <li>
       <div>
-        <span>Your name: </span>
-        <input type="text" [(ngModel)]="name" (keydown.enter)="onKeydown($event)"/>
+        <ul class = "content content-row">
+          <li>
+            <input type="text" [(ngModel)]="name" (keydown.enter)="onKeydown($event)" placeholder="name"/>
+          </li>
+        </ul>
       </div>
     </li>
     <li>
-      <button routerLink="/chat" (click)="enter()">Enter</button>
+      <div>
+        <ul class = "content content-row">
+          <li>
+            <input type="password" [(ngModel)]="password" (keydown.enter)="onKeydown($event)" placeholder="password"/>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div>
+        <button routerLink="/chat" (click)="enter()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngStyle]="buttonStyle">Enter</button>
+      </div>
     </li>
   </ul>
 </div>
