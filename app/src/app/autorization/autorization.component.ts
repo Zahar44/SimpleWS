@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AvatarService } from '../avatar/avatar.service';
 import { ColorGeneratorService } from '../colors/color.generator.service';
 import { AutorizationService } from './autorization.service';
 
@@ -13,12 +14,13 @@ export class AutorizationComponent implements OnInit {
   name: string = '';
   password: string = '';
 
-  buttonStyle: any = { 'background-color': 'black' };
+  buttonStyle: any = { 'background-color': '#acb' };
 
   private buttonInterval!: any;
 
   constructor(
     private readonly autorizationService: AutorizationService,
+    private readonly avatarService: AvatarService,
     private readonly colorGenerator: ColorGeneratorService,
     private readonly router: Router,
   ) { }
@@ -39,14 +41,16 @@ export class AutorizationComponent implements OnInit {
   changeStyle(event: Event) {
     if (event.type === 'mouseout') {
       this.buttonStyle['background-color'] = '#acb';
-      console.log('mouseout');
       clearInterval(this.buttonInterval);
     }
     if (event.type === 'mouseover') {
       this.buttonInterval = setInterval(() => {
-        console.log('mouseover');
         this.buttonStyle['background-color'] = this.colorGenerator.getRandomColor();
       }, 150);
     }
+  }
+
+  changeAvatar() {
+    this.avatarService.changeAvatar();
   }
 }

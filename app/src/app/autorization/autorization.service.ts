@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { AvatarsDicevearService } from "../random.avatars/avatars.dicevear.service";
+import { Seed } from "../random.avatars/seed";
 import { UserEntity } from "../websocket.service";
 
 @Injectable({
@@ -12,9 +14,7 @@ export class AutorizationService {
     this._logged = this.isNameExist();
 
     if (this._logged) {
-      this._user = {
-        name: String(this.getLocalUserName())
-      };
+      this.getLocalUserName();
     }
   }
 
@@ -37,7 +37,8 @@ export class AutorizationService {
   }
 
   private getLocalUserName() {
-    return localStorage.getItem('name');
+    const name = String(localStorage.getItem('name'));
+    this._user = { name };
   }
 
   private isNameExist() {

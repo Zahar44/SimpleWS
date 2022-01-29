@@ -4,12 +4,14 @@
         <div *ngIf="item.sender.name === sender.name">
           <div class = "msg-sender">
             <span>{{ item.msg }}</span>
+            <app-avatar></app-avatar>
           </div>
         </div>
         <div *ngIf="item.sender.name !== sender.name">
           <div class = "msg-other">
-            <span class = "sender"><i>{{ item.sender.name }}</i></span>
-            <span>: {{ item.msg }}</span>
+            <!-- <span class = "sender"><i>{{ item.sender.name }}</i></span> -->
+            <app-avatar></app-avatar>
+            <span>{{ item.msg }}</span>
           </div>
         </div>
     </li>

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AutorizationService } from '../autorization/autorization.service';
 import { Router } from '@angular/router';
+import { AvatarsDicevearService } from '../random.avatars/avatars.dicevear.service';
 
 @Component({
   selector: 'app-chat',
@@ -49,10 +50,14 @@ export class ChatComponent extends WebsocketService implements OnInit {
 
     const user = this.autorizationService.getUser();
     this.sender = user;
+    this.setChatHistory();
     this.emitUserConnected(this.sender);
-    const response = 
-        await this.httpClient.get<UserMessage[]>(environment.serverApi).toPromise() || [];
-    this.chatHistory = response;
+  }
+
+  private setChatHistory() {
+    this.httpClient.get<UserMessage[]>(environment.serverApi).subscribe((chat) => {
+      this.chatHistory = chat;
+    });
   }
 
   private buildMsg(): UserMessage {

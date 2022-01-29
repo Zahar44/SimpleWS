@@ -18,7 +18,6 @@ export class WebsocketService {
   }
 
   public emitUserMessage(msg: UserMessage) {
-    console.log(msg);
     this.socket.emit('message', msg);
   }
 

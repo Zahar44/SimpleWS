@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { AutorizationComponent } from './autorization/autorization.component';
+import { AvatarComponent } from './avatar/avatar.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000'};
 
@@ -15,7 +16,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000'};
   declarations: [
     AppComponent,
     ChatComponent,
-    AutorizationComponent
+    AutorizationComponent,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,  

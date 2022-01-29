@@ -19,11 +19,17 @@
       </div>
     </li>
     <li>
+      <button (click)="changeAvatar()">
+        <app-avatar></app-avatar>
+      </button>
+    </li>
+    <li>
       <div>
         <button routerLink="/chat" (click)="enter()" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)" [ngStyle]="buttonStyle">Enter</button>
       </div>
     </li>
   </ul>
 </div>
+
 
 <router-outlet></router-outlet>
