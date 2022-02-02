@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 export interface UserEntity {
   name: string;
+  seed: string;
 }
 
 export interface UserMessage {

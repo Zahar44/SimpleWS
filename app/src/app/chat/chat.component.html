@@ -10,7 +10,7 @@
         <div *ngIf="item.sender.name !== sender.name">
           <div class = "msg-other">
             <!-- <span class = "sender"><i>{{ item.sender.name }}</i></span> -->
-            <app-avatar></app-avatar>
+            <app-avatar [seed]="item.sender.seed"></app-avatar>
             <span>{{ item.msg }}</span>
           </div>
         </div>

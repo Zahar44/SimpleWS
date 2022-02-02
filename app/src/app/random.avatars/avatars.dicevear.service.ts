@@ -13,13 +13,24 @@ export class AvatarsDicevearService {
     private readonly avatarService: AvatarService,
   ) {}
 
+  public async getAvatarFrom(seed: string): Promise<SvgAvatar> {
+    const rawSvg = await this.getRawSvg(seed);
+    const pathValues = this.parseSvg(rawSvg);
+    return this.buildAvatarFromRaw(pathValues);
+  }
+
   public async getAvatar(): Promise<SvgAvatar> {
     const rawSvg = await this.getRawSvg();
-    const strs = rawSvg.match(/<path[a-zA-Z ="0-9-#/]+>/g) || [];
+    const pathValues = this.parseSvg(rawSvg);
+    return this.buildAvatarFromRaw(pathValues);
+  }
+
+  private parseSvg(raw: string) {
+    const strs = raw.match(/<path[a-zA-Z ="0-9-#/]+>/g) || [];
     const pathValues = strs.map((p) => {
       return p.replace('<path ', '').replace('/>', '');
     })
-    return this.buildAvatarFromRaw(pathValues);
+    return pathValues;
   }
 
   private buildAvatarFromRaw(strs: string[]): SvgAvatar {
@@ -47,10 +58,11 @@ export class AvatarsDicevearService {
     return String(str.match(/[fill="][a-zA-Z0-9#]+["]/)).replace('"', '').slice(0, -1);
   }
 
-  private async getRawSvg(): Promise<string> {
+  private async getRawSvg(_seed?: string): Promise<string> {
+    const seed = _seed || this.avatarService.getSeed();
     const uri = DiceavearApi.create()
       .withSprites(SpitesType.human)
-      .withSeed(this.avatarService.getSeed())
+      .withSeed(seed)
       .getUri()
     const response = await this.httpClient.get(uri, { responseType: 'text' }).toPromise();
     return response || '';

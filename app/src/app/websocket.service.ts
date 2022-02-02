@@ -3,6 +3,7 @@ import { Socket } from 'ngx-socket-io';
 
 export interface UserEntity {
   name: string;
+  seed: string;
 }
 
 export interface UserMessage {
