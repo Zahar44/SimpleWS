@@ -9,11 +9,10 @@ import { AvatarService } from './avatar.service';
 })
 export class AvatarComponent implements OnInit {
   private avatarLoaded = false;
+  private _seed: string = '';
+
   @Input() set seed(v: string) {
-    setTimeout(() => {
-      console.log(v);
-      this.seed = v;
-    }, 0);
+    this._seed = v;
   }
   avatar!: SvgAvatar;
 
@@ -27,11 +26,9 @@ export class AvatarComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    if (!this.seed) {
-      console.log(1);
+    if (!this._seed) {
       await this.setLocalAvatar();
     } else {
-      console.log(2);
       await this.setCustomAvatar();
     }
   }
@@ -41,13 +38,11 @@ export class AvatarComponent implements OnInit {
   }
 
   private async setCustomAvatar() {
-    console.log(this.seed);
-    this.avatar = await this.avatarsDicevearService.getAvatarFrom(this.seed);
+    this.avatar = await this.avatarsDicevearService.getAvatarFrom(this._seed);
     this.avatarLoaded = true;
   }
 
   private async setLocalAvatar() {
-    console.log(this.seed);
     this.avatar = await this.avatarsDicevearService.getAvatar();
     this.avatarLoaded = true;
   }

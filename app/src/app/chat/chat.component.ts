@@ -52,7 +52,6 @@ export class ChatComponent extends WebsocketService implements OnInit {
     const user = this.autorizationService.getUser();
     this.sender = user;
     this.setChatHistory();
-    console.log(this.chatHistory);
     this.emitUserConnected(this.sender);
   }
 
