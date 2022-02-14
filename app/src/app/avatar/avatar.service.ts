@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { AutorizationService } from '../autorization/autorization.service';
 import { Seed } from '../random.avatars/seed';
 
@@ -32,7 +33,9 @@ export class AvatarService {
   }
 
   private saveSeed() {
-    localStorage.setItem('seed', this._seed);
-    this.seedChange.next(this._seed);
+    if (!environment.debugg) {
+      localStorage.setItem('seed', this._seed);
+      this.seedChange.next(this._seed);
+    }
   }
 }

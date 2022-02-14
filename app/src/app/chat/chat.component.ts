@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { UserEntity, UserMessage, WebsocketService } from '../websocket.service';
 import { Socket } from 'ngx-socket-io';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { AutorizationService } from '../autorization/autorization.service';
 import { Router } from '@angular/router';
 import { AvatarsDicevearService } from '../random.avatars/avatars.dicevear.service';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 @Component({
   selector: 'app-chat',

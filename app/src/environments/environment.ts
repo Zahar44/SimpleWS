@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serverApi: 'http://localhost:3000/'
+  serverApi: 'http://localhost:3000/',
+  debugg: true,
 };
 
 /*

@@ -1,0 +1,1 @@
+wt -w 0 nt -d "./app/" cmd /k npm run start ; -w 0 nt -d "./server/" cmd /k npm run start ; cmd /k exit

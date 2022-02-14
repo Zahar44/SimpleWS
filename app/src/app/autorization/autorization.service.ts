@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { environment } from "../../environments/environment";
 import { AvatarsDicevearService } from "../random.avatars/avatars.dicevear.service";
 import { Seed } from "../random.avatars/seed";
 import { UserEntity } from "../websocket.service";
@@ -8,10 +9,12 @@ import { UserEntity } from "../websocket.service";
 })
 export class AutorizationService {
   private _user!: UserEntity;
-  private _logged: boolean;
+  private _logged: boolean = false;
 
   constructor() {
-    this._logged = this.isNameExist();
+    if (!environment.debugg) {
+      this._logged = this.isNameExist();
+    }
 
     if (this._logged) {
       this.getLocalUserName();
@@ -20,7 +23,10 @@ export class AutorizationService {
 
   public setUser(user: UserEntity) {
     this._user = user;
-    this.saveUser();
+
+    if (!environment.debugg) {
+      this.saveUser();
+    }
   }
 
   public getUser(): UserEntity {
@@ -38,7 +44,8 @@ export class AutorizationService {
 
   private getLocalUserName() {
     const name = String(localStorage.getItem('name'));
-    this._user = { name };
+    const seed = String(localStorage.getItem('seed'));
+    this._user = { name, seed };
   }
 
   private isNameExist() {

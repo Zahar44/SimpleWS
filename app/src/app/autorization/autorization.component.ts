@@ -30,7 +30,10 @@ export class AutorizationComponent implements OnInit {
   }
 
   @Input() enter() {
-    this.autorizationService.setUser({ name: this.name });
+    this.autorizationService.setUser({ 
+      name: this.name, 
+      seed: this.avatarService.getSeed() 
+    });
   }
 
   onKeydown(event: Event) {
