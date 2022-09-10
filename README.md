@@ -10,3 +10,7 @@
 # Proof of work
 
 ![Gif](https://media.giphy.com/media/pgmNiLg8s7lfSRmcwI/giphy.gif)
+
+# External projects
+
+Very cute and nice avatar generator, link: https://avatars.dicebear.com/
